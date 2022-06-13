@@ -6,14 +6,21 @@ export interface Authority {
   name: string;
 }
 
-export interface User {
-  id: string;
-  email: string;
-  roles: Array<Authority>;
+export interface YandexUser {
+  username?: string;
+  email?: string;
+  realName?: string;
+  authGoogle?: boolean;
 }
 
 export interface GoogleMediaItem {
   mimeType: string;
   title: string;
   baseUrl: string;
+  isPhoto: string;
+}
+
+export interface GooglePageMediaItem {
+  next: string;
+  mediaItems: Array<GoogleMediaItem>;
 }

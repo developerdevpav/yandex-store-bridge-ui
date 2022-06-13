@@ -2,13 +2,38 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './blocks/header/header.component';
+import { HttpClientModule} from "@angular/common/http";
+import { StoreModule } from '@ngrx/store';
+import {yandexUserReducer} from "./store/yandex-user/reducers";
+import {environment} from "../environments/environment";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {reducers} from "./store";
+import { OAuth2LoginComponent } from './blocks/oauth2-login/oauth2-login.component';
+import {RouterModule} from "@angular/router";
+import { WorkspaceComponent } from './blocks/workspace/workspace.component';
+import { GooglePhotoPageComponent } from './components/google-photo-page/google-photo-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    OAuth2LoginComponent,
+    WorkspaceComponent,
+    GooglePhotoPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
+    RouterModule.forRoot([
+      {path: '', component: WorkspaceComponent},
+      {path: 'login', component: OAuth2LoginComponent}
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

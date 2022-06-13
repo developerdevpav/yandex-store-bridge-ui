@@ -1,6 +1,8 @@
-<div>
-  <div class="yandex-application-banner">
-    <div class="yandex-application-banner_title"></div>
-    <span>Яндекс</span> <span>Мост</span>
+<div class="container-xl">
+  <div>
+    <header (onLogin)="yandexLogin()"></header>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
   </div>
 </div>
