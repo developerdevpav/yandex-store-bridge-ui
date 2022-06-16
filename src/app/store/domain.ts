@@ -2,11 +2,11 @@ export interface BaseEntity {
   id?: number;
 }
 
-export interface Authority {
+export interface Authority extends BaseEntity {
   name: string;
 }
 
-export interface YandexUser {
+export interface YandexUser extends BaseEntity {
   username?: string;
   email?: string;
   realName?: string;

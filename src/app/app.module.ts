@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './blocks/header/header.component';
 import { HttpClientModule} from "@angular/common/http";
 import { StoreModule } from '@ngrx/store';
-import {yandexUserReducer} from "./store/yandex-user/reducers";
 import {environment} from "../environments/environment";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {reducers} from "./store";
@@ -13,6 +12,8 @@ import { OAuth2LoginComponent } from './blocks/oauth2-login/oauth2-login.compone
 import {RouterModule} from "@angular/router";
 import { WorkspaceComponent } from './blocks/workspace/workspace.component';
 import { GooglePhotoPageComponent } from './components/google-photo-page/google-photo-page.component';
+import {EffectsModule} from "@ngrx/effects";
+import {YandexStreamEffects, YandexUserEffects} from "./store/yandex-user/effects";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { GooglePhotoPageComponent } from './components/google-photo-page/google-
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([YandexUserEffects, YandexStreamEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

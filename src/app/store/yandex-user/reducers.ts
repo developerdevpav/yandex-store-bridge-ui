@@ -1,6 +1,6 @@
 import {YandexUser} from "../domain";
 import {createReducer, on} from "@ngrx/store";
-import {setLocalUser, setUrlAuthorization} from "./actions";
+import {setLocalUser} from "./actions";
 
 
 export interface YandexUserStoreState {
@@ -15,8 +15,7 @@ export const yandexUserStoreState: YandexUserStoreState = {
 
 export const yandexUserReducer = createReducer(
   yandexUserStoreState,
-  on(setLocalUser, (state, props) => ({...state, userinfo: props.yandexUser})),
-  on(setUrlAuthorization, (state, props) => ({...state, userinfo: undefined, urlRedirect: props.url}))
+  on(setLocalUser, (state, props) => ({...state, userinfo: props.yandexUser}))
 )
 
 
