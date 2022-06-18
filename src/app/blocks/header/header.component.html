@@ -1,0 +1,18 @@
+<div class="yandex-application-banner row">
+  <div class="yandex-application-banner__title col-xl-6">
+    <span class="">Я</span><span>Мост</span>
+  </div>
+  <div class="yandex-application-banner__auth col-xl-6">
+    <ng-template [ngIf] = "yandexUser">
+      <div style="font-weight: bold; font-size: 16px">
+        <span style="margin-right: 10px; color: red;">{{yandexUser?.realName}}</span><span style="margin-right: 10px">|</span>{{yandexUser?.email}}
+      </div>
+    </ng-template>
+    <ng-template [ngIf] = "!yandexUser">
+      <a href="/oauth2/yandex/authorization">
+        <img class="doc-c-image doc-c-image"
+             src="https://yastatic.net/s3/doc-binary/freeze/ru/id/ec0a9a2746acf73f328a42309bd0085bc96bb987.svg">
+      </a>
+    </ng-template>
+  </div>
+</div>

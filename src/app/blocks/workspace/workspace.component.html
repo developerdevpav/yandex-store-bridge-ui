@@ -1,0 +1,23 @@
+<div class="workspace row">
+  <div class="app-information" *ngIf="!yandexUser">
+    <h1><span>Яндекс</span> Мост</h1>
+    <br>
+    <h4>Сервис Яндекс Мост позволяет перенести все файлы с Google Photos в Yandex Disk</h4>
+    <h4>Перенос данных как никогда актуален, так как люди из СНГ потеряли возможность
+      платить за сервисы предоставляемыe Google.</h4>
+    <h4>Пользователь в одном сервисе проходит авторизацию Яндекс, а затем Google, а после чего выбирает необходимые файлы (или все),
+      дальше вступает в роль "bridge of the resources" и создает такую же иерархию файловой системы как в Google Photo.</h4>
+  </div>
+  <div class="unauthorized-google-user" *ngIf="yandexUser && !googleAuth">
+    <a href="/oauth2/google/authorization">
+      <img src="/assets/google-icons/btn_google_signin_dark_normal_web@2x.png">
+    </a>
+    <h2>Для получения доступа к сервису Google Photos необходимо авторизоваться в Google</h2>
+    <h5>После авторизации сервис будет иметь доступ к Вашим личным данным (файлам Google Photos).
+      Сервис не сохраняет Ваши файлы, а также НЕ анализирует/агрегирует.
+      Задача сервиса предоставления этих данных Вашему Яндекс Диску</h5>
+  </div>
+
+  <ng-template [ngIf]="yandexUser && googleAuth">
+  </ng-template>
+</div>

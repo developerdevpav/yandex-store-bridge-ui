@@ -2,7 +2,7 @@ import {createSelector} from "@ngrx/store";
 import {State} from "../index";
 
 
-export const selectStateYandexUser = (state: State) => state.yandexStore;
+export const selectStateYandexUser = (state: State) => state.yandexUser;
 
 export const selectYandexUser = createSelector(
   selectStateYandexUser, (yandexUserStore) => yandexUserStore.userinfo

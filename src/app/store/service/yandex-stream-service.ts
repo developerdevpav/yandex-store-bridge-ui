@@ -1,12 +1,14 @@
-import {YandexUser} from "../domain";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Injectable} from "@angular/core";
 
 export interface YandexStream {
   id: string;
   name: string;
+  date: Date
 }
 
+@Injectable({ providedIn: 'root' })
 export class YandexStreamService {
 
   constructor(protected httpClient: HttpClient) {

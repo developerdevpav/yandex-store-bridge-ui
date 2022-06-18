@@ -1,7 +1,9 @@
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {YandexUser} from "../domain";
+import {Injectable} from "@angular/core";
 
+@Injectable({ providedIn: 'root' })
 export class YandexUserService {
 
   constructor(protected httpClient: HttpClient) {

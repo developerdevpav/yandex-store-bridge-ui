@@ -1,0 +1,39 @@
+.workspace {
+  text-align: center;
+
+  .app-information {
+    & > h1 {
+
+      & span {
+        color: red;
+      }
+      margin: 100px 0;
+      border-bottom-color: red;
+      font-size: 150px;
+    }
+
+    & > h4 {
+      font-weight: 500;
+      font-size: 30px;
+    }
+  }
+  .unauthorized-google-user {
+    margin: 140px 0;
+
+    & > a img {
+      height: 40px;
+    }
+
+    & > h2 {
+      margin-top: 50px;
+    }
+
+    & > h5 {
+      font-size: 16px;
+
+      font-weight: normal;
+    }
+  }
+
+}
+

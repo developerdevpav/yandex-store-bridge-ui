@@ -11,9 +11,11 @@ import {reducers} from "./store";
 import { OAuth2LoginComponent } from './blocks/oauth2-login/oauth2-login.component';
 import {RouterModule} from "@angular/router";
 import { WorkspaceComponent } from './blocks/workspace/workspace.component';
-import { GooglePhotoPageComponent } from './components/google-photo-page/google-photo-page.component';
 import {EffectsModule} from "@ngrx/effects";
-import {YandexStreamEffects, YandexUserEffects} from "./store/yandex-user/effects";
+import {YandexUserEffects} from "./store/yandex-user/effects";
+import { StreamCardComponent } from './blocks/stream-card/stream-card.component';
+import { StreamPageComponent } from './pages/stream-page/stream-page.component';
+import {YandexStreamEffects} from "./store/yandex-stream/effects";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import {YandexStreamEffects, YandexUserEffects} from "./store/yandex-user/effect
     HeaderComponent,
     OAuth2LoginComponent,
     WorkspaceComponent,
-    GooglePhotoPageComponent
+    StreamCardComponent,
+    StreamPageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import {YandexStreamEffects, YandexUserEffects} from "./store/yandex-user/effect
     }),
     RouterModule.forRoot([
       {path: '', component: WorkspaceComponent},
+      {path: 'streams', component: StreamPageComponent},
       {path: 'login', component: OAuth2LoginComponent}
     ]),
   ],

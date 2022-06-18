@@ -1,0 +1,49 @@
+.yandex-application-banner {
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  padding: 15px 0;
+
+  & > div {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 60px;
+  }
+
+  &__title > span:first-child {
+    color: red;
+  }
+
+
+  &__auth {
+    justify-content: flex-end;
+  }
+
+
+  &__auth {
+    text-align: end;
+  }
+
+  .menu {
+    & ul li {
+      display: inline;
+      font-size: 20px;
+    }
+
+    &__item {
+      cursor: pointer;
+      padding: 0 10px;
+
+      &_bold {
+        font-weight: 600;
+      }
+    }
+
+    margin: 0 20px;
+  }
+
+}
+

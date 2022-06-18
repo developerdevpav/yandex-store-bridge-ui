@@ -1,11 +1,14 @@
-import {yandexUserReducer, YandexUserStoreState} from "./yandex-user/reducers";
+import {yandexUserReducer, YandexUserState} from "./yandex-user/reducers";
 import {ActionReducerMap} from "@ngrx/store";
+import {reducerYandexStream, YandexStreamState} from "./yandex-stream/reducers";
 
 export interface State {
-  yandexStore: YandexUserStoreState;
+  yandexUser: YandexUserState;
+  yandexStream: YandexStreamState
 }
 
 
 export const reducers: ActionReducerMap<State> = {
-  yandexStore: yandexUserReducer
+  yandexUser: yandexUserReducer,
+  yandexStream: reducerYandexStream
 }

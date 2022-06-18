@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Store} from "@ngrx/store";
-import {YandexUserStoreState} from "./store/yandex-user/reducers";
-import {setLocalUser, setUrlAuthorization} from "./store/yandex-user/actions";
+import {YandexUserState} from "./store/yandex-user/reducers";
+import {setLocalUser} from "./store/yandex-user/actions";
 import {YandexUser} from "./store/domain";
 import {map} from "rxjs";
 
@@ -14,7 +14,7 @@ import {map} from "rxjs";
 export class AppComponent implements OnInit {
   title = 'yandex-store-bridge';
 
-  constructor(public httpClient: HttpClient, private yandexUserStore: Store<YandexUserStoreState>) {
+  constructor(public httpClient: HttpClient, private yandexUserStore: Store<YandexUserState>) {
   }
 
   yandexLogin() {
@@ -28,9 +28,6 @@ export class AppComponent implements OnInit {
       )
       .subscribe((yandexUser) => {
         this.yandexUserStore.dispatch(setLocalUser({yandexUser: {...yandexUser}}))
-      }, error => {
-        console.log(error);
-        // this.yandexUserStore.dispatch(setUrlAuthorization({url: error}))
       });
   }
 

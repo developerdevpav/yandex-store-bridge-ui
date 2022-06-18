@@ -3,12 +3,12 @@ import {createReducer, on} from "@ngrx/store";
 import {setLocalUser} from "./actions";
 
 
-export interface YandexUserStoreState {
+export interface YandexUserState {
   userinfo?: YandexUser;
   urlRedirect?: string;
 }
 
-export const yandexUserStoreState: YandexUserStoreState = {
+export const yandexUserStoreState: YandexUserState = {
   userinfo: undefined,
   urlRedirect: undefined
 }
