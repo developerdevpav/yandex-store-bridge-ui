@@ -5,7 +5,13 @@ import {Injectable} from "@angular/core";
 export interface YandexStream {
   id: string;
   name: string;
-  date: Date
+  status: string;
+  date: Date;
+}
+
+export class RequestCreateYandexStream {
+  id: string | null = null;
+  mediaTypes: string[] = [];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -14,8 +20,14 @@ export class YandexStreamService {
   constructor(protected httpClient: HttpClient) {
   }
 
-  public createStream = (): Observable<YandexStream> => {
-    return this.httpClient.request('POST', '/api/yandex/streams') as Observable<YandexStream>;
+  public createStream = (request: RequestCreateYandexStream): Observable<YandexStream> => {
+    return this.httpClient.request('POST', '/api/yandex/streams/upload-google-page',
+      {
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(request)
+      }) as Observable<YandexStream>;
   }
 
   public interruptStream = (id: number) => {

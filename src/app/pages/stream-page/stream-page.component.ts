@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
 import {State} from "../../store";
-import {serverYandexStream} from "../../store/yandex-stream/actions";
+import {serverCreateYandexStream, serverYandexStream} from "../../store/yandex-stream/actions";
+import {selectYandexStream} from "../../store/yandex-stream/selectors";
+import {YandexStream} from "../../store/service/yandex-stream-service";
 
 @Component({
   selector: 'app-stream-page',
@@ -10,10 +12,16 @@ import {serverYandexStream} from "../../store/yandex-stream/actions";
 })
 export class StreamPageComponent implements OnInit {
 
+  public streams: YandexStream[] = [];
+
   constructor(private store: Store<State>) { }
 
   ngOnInit(): void {
     this.store.dispatch(serverYandexStream());
+    this.store.select(selectYandexStream).subscribe(streams => this.streams = streams)
   }
 
+  createStream() {
+    this.store.dispatch(serverCreateYandexStream({id: null, mediaTypes: ['png']}))
+  }
 }

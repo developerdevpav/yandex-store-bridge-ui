@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Actions, Effect, ofType} from "@ngrx/effects";
-import {YandexStreamService} from "../service/yandex-stream-service";
+import {RequestCreateYandexStream, YandexStream, YandexStreamService} from "../service/yandex-stream-service";
 import {catchError, map, mergeMap, of} from "rxjs";
-import {storeYandexStream, YandexStreamAction} from "./actions";
+import {serverCreateYandexStream, storeYandexStream, storeYandexStreams, YandexStreamAction} from "./actions";
 
 @Injectable()
 export class YandexStreamEffects {
@@ -11,11 +11,16 @@ export class YandexStreamEffects {
 
   @Effect()
   public createStream = this.actions$.pipe(
-    ofType('[CREATE YANDEX STREAM]'),
-    mergeMap(() =>
-      this.yandexStreamService.createStream()
+    ofType(serverCreateYandexStream),
+    map((action) => {
+      return { id: action.id, mediaTypes: action.mediaTypes }
+    }),
+    mergeMap((request: RequestCreateYandexStream) =>
+      this.yandexStreamService.createStream(request)
         .pipe(
-          // TODO написать добавление в Store
+          map((stream: YandexStream) => {
+            return storeYandexStream({ stream })
+          })
         )
     )
   )
@@ -26,11 +31,8 @@ export class YandexStreamEffects {
     mergeMap(() =>
       this.yandexStreamService.getStreams()
         .pipe(
-          map(
-            (streams) =>
-              storeYandexStream({ streams: streams })
-          ),
-          catchError((err, caught) => {
+          map((streams: YandexStream[]) => storeYandexStreams({ streams: streams })),
+          catchError((err: any) => {
             console.log('catchError ' + err.getMessage())
             return of()
           })

@@ -1,5 +1,10 @@
 <div class="stream-section">
+  <div class="mb-3 mt-3">
+    <button (click)="createStream()">Создать поток</button>
+  </div>
   <div class="mt-3">
-    <stream-card name="yandex-stream-34" [mimes]="['mp4', 'jpeg']"></stream-card>
+    <ng-template ngFor let-stream [ngForOf]="streams">
+      <stream-card [name]="stream?.name"></stream-card>
+    </ng-template>
   </div>
 </div>
