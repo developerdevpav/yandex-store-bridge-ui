@@ -16,6 +16,8 @@ import {YandexUserEffects} from "./store/yandex-user/effects";
 import { StreamCardComponent } from './blocks/stream-card/stream-card.component';
 import { StreamPageComponent } from './pages/stream-page/stream-page.component';
 import {YandexStreamEffects} from "./store/yandex-stream/effects";
+import { MimeTypeCardComponent } from './blocks/mime-type-card/mime-type-card.component';
+import { StreamContainerComponent } from './blocks/stream-container/stream-container.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {YandexStreamEffects} from "./store/yandex-stream/effects";
     OAuth2LoginComponent,
     WorkspaceComponent,
     StreamCardComponent,
-    StreamPageComponent
+    StreamPageComponent,
+    MimeTypeCardComponent,
+    StreamContainerComponent
   ],
   imports: [
     BrowserModule,
