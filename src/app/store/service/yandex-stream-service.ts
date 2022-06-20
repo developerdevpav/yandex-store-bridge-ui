@@ -3,9 +3,10 @@ import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 
 export interface YandexStream {
-  id: string;
+  id: number;
   name: string;
   status: string;
+  mediaTypes: string[] | undefined;
   date: Date;
 }
 

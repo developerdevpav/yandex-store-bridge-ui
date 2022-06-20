@@ -20,10 +20,10 @@ export class StreamCardComponent implements OnInit {
   public name: string | undefined;
 
   @Input()
-  public mimes: string[] = [];
+  public mimes: string[] | undefined = [];
 
   @Input()
-  public date: Date = new Date();
+  public date: Date | undefined = new Date();
 
   public _status: string | undefined;
 

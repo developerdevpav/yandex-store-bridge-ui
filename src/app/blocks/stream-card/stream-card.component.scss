@@ -1,7 +1,14 @@
 .stream-card {
   padding: 10px;
+  box-sizing: content-box;
 
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.13);
+
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid rgb(255, 0, 0);
+  }
 }
 
 .mime-type-card-container > mime-type-card {

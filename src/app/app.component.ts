@@ -5,6 +5,7 @@ import {YandexUserState} from "./store/yandex-user/reducers";
 import {setLocalUser} from "./store/yandex-user/actions";
 import {YandexUser} from "./store/domain";
 import {map} from "rxjs";
+import {YandexStream} from "./store/service/yandex-stream-service";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,23 @@ import {map} from "rxjs";
 })
 export class AppComponent implements OnInit {
   title = 'yandex-store-bridge';
+
+  streams: YandexStream[] = [
+    {
+      id: 20,
+      date: new Date(),
+      name: 'yandex-stream-23',
+      mediaTypes: ['MP4', 'JPEG'],
+      status: 'CREATED'
+    },
+    {
+      id: 23,
+      date: new Date(),
+      name: 'yandex-stream-21',
+      mediaTypes: ['PNG'],
+      status: 'CREATED'
+    }
+  ]
 
   constructor(public httpClient: HttpClient, private yandexUserStore: Store<YandexUserState>) {
   }

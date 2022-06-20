@@ -1,1 +1,8 @@
-<p>stream-container works!</p>
+<div class="stream-section">
+  <ng-template let-stream ngFor [ngForOf]="streams">
+    <div class="stream-section_item">
+      <stream-card [name]="stream?.name" [mimes]="stream?.mediaTypes" [status]="stream?.status" [date]="stream?.date">
+      </stream-card>
+    </div>
+  </ng-template>
+</div>
