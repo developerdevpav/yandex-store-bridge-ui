@@ -13,6 +13,12 @@ export interface YandexUser extends BaseEntity {
   authGoogle?: boolean;
 }
 
+export interface MimeType  extends BaseEntity {
+  mediaType?: string;
+  name: string;
+  id?: number;
+}
+
 export interface GoogleMediaItem {
   mimeType: string;
   title: string;

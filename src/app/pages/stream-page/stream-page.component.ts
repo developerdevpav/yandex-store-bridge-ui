@@ -18,10 +18,9 @@ export class StreamPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(serverYandexStream());
-    this.store.select(selectYandexStream).subscribe(streams => this.streams = streams)
+    this.store.select(selectYandexStream).subscribe(streams => {
+      this.streams = streams
+    })
   }
 
-  createStream() {
-    this.store.dispatch(serverCreateYandexStream({id: null, mediaTypes: ['png']}))
-  }
 }

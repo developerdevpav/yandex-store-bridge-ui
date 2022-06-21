@@ -1,0 +1,10 @@
+<div class="stream-form row">
+  <div class="stream-form_mimes col-12 d-flex justify-content-center align-items-center flex-wrap p-0">
+    <ng-template let-mimeType ngFor [ngForOf]="mimeTypes">
+      <mime-type-card [name]="mimeType?.name" (click)="changeMimeType(mimeType)"></mime-type-card>
+    </ng-template>
+  </div>
+  <div class="stream-form_panel-action d-flex justify-content-center">
+    <button class="stream-form_btn stream-form_btn_blue" (click)="runStream()">Запустить</button>
+  </div>
+</div>

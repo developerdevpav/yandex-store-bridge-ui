@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {MimeType} from "../../store/domain";
 
 @Component({
   selector: 'stream-card',
@@ -20,7 +21,7 @@ export class StreamCardComponent implements OnInit {
   public name: string | undefined;
 
   @Input()
-  public mimes: string[] | undefined = [];
+  public mimes: MimeType[] | undefined = [];
 
   @Input()
   public date: Date | undefined = new Date();

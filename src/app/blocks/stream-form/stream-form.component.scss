@@ -1,0 +1,37 @@
+.stream-form {
+
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  border-radius: 10px;
+
+  padding: 15px;
+
+  &_mimes {
+    margin-bottom: 20px;
+    mime-type-card {
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    mime-type-card:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &_panel-action {
+    padding: 0;
+  }
+
+  &_btn {
+    background: none;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.13);
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+
+    &_blue {
+      background: blue;
+      color: white;
+    }
+  }
+}

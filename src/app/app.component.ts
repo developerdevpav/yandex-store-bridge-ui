@@ -20,14 +20,14 @@ export class AppComponent implements OnInit {
       id: 20,
       date: new Date(),
       name: 'yandex-stream-23',
-      mediaTypes: ['MP4', 'JPEG'],
+      mediaTypes: [{name: 'MP4'}, { name: 'JPEG' }],
       status: 'CREATED'
     },
     {
       id: 23,
       date: new Date(),
       name: 'yandex-stream-21',
-      mediaTypes: ['PNG'],
+      mediaTypes: [{ name: 'PNG' }],
       status: 'CREATED'
     }
   ]

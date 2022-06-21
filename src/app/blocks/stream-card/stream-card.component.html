@@ -7,11 +7,11 @@
   <div class="col-xl-7 col-md-12 col-sm-12 d-flex flex-wrap justify-content-xl-start
   justify-content-md-center align-items-center mime-type-card-container">
     <ng-template let-mimeType ngFor [ngForOf]="mimes">
-      <mime-type-card [name]="mimeType"></mime-type-card>
+      <mime-type-card [name]="mimeType.name"></mime-type-card>
     </ng-template>
   </div>
   <div class="col-xl-2 d-flex justify-content-xl-end justify-content-md-center align-items-center">
-    {{date | date:'HH:ss d.MM.y'}}
+    {{date | date:'HH:mm:ss / d.MM.y'}}
   </div>
   <div class="col-xl-1 col-md-12 col-sm-12 d-flex justify-content-xl-end justify-content-md-center align-items-center">
     {{_status}}

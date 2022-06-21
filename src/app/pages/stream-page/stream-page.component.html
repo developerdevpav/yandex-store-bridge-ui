@@ -1,10 +1,16 @@
-<div class="stream-section">
-  <div class="mb-3 mt-3">
-    <button (click)="createStream()">Создать поток</button>
+<div class="stream-section row d-flex flex-nowrap">
+  <div class="col-2 mb-3 mt-3" style="margin-right: 20px">
+    <stream-form></stream-form>
   </div>
-  <div class="mt-3">
-    <ng-template ngFor let-stream [ngForOf]="streams">
-      <stream-card [name]="stream?.name"></stream-card>
-    </ng-template>
-  </div>
+
+    <div class="col-10 mt-3">
+      <ng-template [ngIf]="streams.length > 0">
+      <stream-container [streams]="streams"></stream-container>
+      </ng-template>
+      <ng-template [ngIf]="streams.length === 0">
+        <div style="width: 100%; text-align: center">
+          <span>Потоков не найдено</span>
+        </div>
+      </ng-template>
+    </div>
 </div>

@@ -1,12 +1,13 @@
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
+import {MimeType} from "../domain";
 
 export interface YandexStream {
   id: number;
   name: string;
   status: string;
-  mediaTypes: string[] | undefined;
+  mediaTypes: MimeType[] | undefined;
   date: Date;
 }
 
