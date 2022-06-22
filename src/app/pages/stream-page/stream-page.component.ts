@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {State} from "../../store";
-import {serverCreateYandexStream, serverYandexStream} from "../../store/yandex-stream/actions";
+import {serverYandexStream} from "../../store/yandex-stream/actions";
 import {selectYandexStream} from "../../store/yandex-stream/selectors";
-import {YandexStream} from "../../store/service/yandex-stream-service";
+import {YandexStream} from "../../store/domain";
+import {loadUncloudedMimeType, setStoreUncloudedMimeType} from "../../store/mime-type/actions";
 
 @Component({
   selector: 'app-stream-page',
@@ -14,13 +15,40 @@ export class StreamPageComponent implements OnInit {
 
   public streams: YandexStream[] = [];
 
-  constructor(private store: Store<State>) { }
-
-  ngOnInit(): void {
-    this.store.dispatch(serverYandexStream());
-    this.store.select(selectYandexStream).subscribe(streams => {
-      this.streams = streams
-    })
+  constructor(private localStore: Store<State>) {
   }
 
+
+  ngOnInit(): void {
+    this.localStore.dispatch(serverYandexStream());
+
+    this.localStore.select(selectYandexStream).subscribe(streams => {
+      this.localStore.dispatch(loadUncloudedMimeType());
+
+      this.streams = streams
+    });
+  }
+
+  addMimeType() {
+    this.localStore.dispatch(setStoreUncloudedMimeType({
+      mimeTypes: [
+        {
+          id: 1,
+          name: 'MP4'
+        },
+        {
+          id: 2,
+          name: 'PNG'
+        },
+        {
+          id: 3,
+          name: 'JPEG'
+        },
+        {
+          id: 4,
+          name: 'HEIC'
+        }
+      ]
+    }))
+  }
 }

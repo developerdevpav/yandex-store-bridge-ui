@@ -1,9 +1,9 @@
 <div class="stream-section row d-flex flex-nowrap">
-  <div class="col-2 mb-3 mt-3" style="margin-right: 20px">
+  <div class="col-3 mb-3 mt-3" style="margin-right: 20px">
     <stream-form></stream-form>
   </div>
-
-    <div class="col-10 mt-3">
+    <div class="col-9 mt-3">
+      <button (click)="addMimeType()">Добавить Mime Types</button>
       <ng-template [ngIf]="streams.length > 0">
       <stream-container [streams]="streams"></stream-container>
       </ng-template>

@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {RequestCreateYandexStream, YandexStream} from "../service/yandex-stream-service";
+import {RequestCreateYandexStream, YandexStream} from "../domain";
 
 export enum YandexStreamAction {
   LOAD_YANDEX_STREAM = '[LOAD-YANDEX-STREAM] Load yandex streams from server',

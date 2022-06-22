@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {MimeType} from "../../store/domain";
 import {Store} from "@ngrx/store";
-import {YandexStreamState} from "../../store/yandex-stream/reducers";
 import {serverCreateYandexStream} from "../../store/yandex-stream/actions";
+import {Selector} from "../../utils/selector";
+import {loadUncloudedMimeType} from "../../store/mime-type/actions";
+import {selectUncloudedMimeTypes} from "../../store/mime-type/selectors";
+import {State} from "../../store";
 
 @Component({
   selector: 'stream-form',
@@ -14,45 +17,25 @@ export class StreamFormComponent implements OnInit {
 
   public mimeTypes: MimeType[] = [];
 
-  public smt: {[key: string]: MimeType} = {};
+  public mimeTypeSelector = new Selector<MimeType>('name')
 
-  constructor(private httpClient: HttpClient, private store: Store<YandexStreamState>) { }
+  constructor(private httpClient: HttpClient, private localStore: Store<State>) { }
+
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.httpClient.get('/api/mime-types/unclouded').subscribe(mimeTypes => {
-        this.mimeTypes = mimeTypes as MimeType[];
-      })
-    }, 3000);
-  }
+    this.localStore.dispatch(loadUncloudedMimeType());
 
-  changeMimeType(mimeType: MimeType) {
-    if (this.isSelected(mimeType)) {
-      this.unselect(mimeType);
-    } else {
-      this.select(mimeType);
-    }
-  }
-
-  select(mimeType: MimeType) {
-    this.smt[mimeType.name] = mimeType;
-  }
-
-  unselect(mimeType: MimeType) {
-    delete this.smt[mimeType.name];
-  }
-
-  isSelected(mimeType: MimeType): boolean {
-    return !!this.smt[mimeType.name];
+    this.localStore.select(selectUncloudedMimeTypes).subscribe(mimeTypes => this.mimeTypes = mimeTypes)
   }
 
   runStream() {
-    const keys = Object.keys(this.smt);
+    const keys = this.mimeTypeSelector.collect().keys();
 
     const bodyReq = {id: null, mediaTypes: keys};
 
     const yandexStreamAction = serverCreateYandexStream(bodyReq);
 
-    this.store.dispatch(yandexStreamAction);
+    this.localStore.dispatch(yandexStreamAction);
   }
+
 }

@@ -1,7 +1,6 @@
-import {YandexUser} from "../domain";
-import {YandexStream} from "../service/yandex-stream-service";
 import {createReducer, on} from "@ngrx/store";
 import {storeYandexStream, storeYandexStreams, YandexStreamAction} from "./actions";
+import {YandexStream} from "../domain";
 
 export interface YandexStreamState {
   streams?: YandexStream[];

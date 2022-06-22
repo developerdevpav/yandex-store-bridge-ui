@@ -12,7 +12,5 @@ export const initializedMimeTypeState: MimeTypeState = {
 
 export const reducerMimeType = createReducer(
   initializedMimeTypeState,
-  on(setStoreUncloudedMimeType, (state, props) => {
-    return { ...state, unclouded: props.mimeTypes }
-  })
+  on(setStoreUncloudedMimeType, (state, props) => ({ ...state, unclouded: props.mimeTypes }))
 );

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {YandexStream} from "../../store/service/yandex-stream-service";
+import {YandexStream} from "../../store/domain";
 
 @Component({
   selector: 'stream-container',

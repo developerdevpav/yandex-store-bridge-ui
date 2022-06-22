@@ -1,13 +1,15 @@
 import {Injectable} from "@angular/core";
 import {Actions, Effect, ofType} from "@ngrx/effects";
-import {RequestCreateYandexStream, YandexStream, YandexStreamService} from "../service/yandex-stream-service";
+import {YandexStreamService} from "../service/yandex-stream-service";
 import {catchError, map, mergeMap, of} from "rxjs";
 import {serverCreateYandexStream, storeYandexStream, storeYandexStreams, YandexStreamAction} from "./actions";
+import {RequestCreateYandexStream, YandexStream} from "../domain";
 
 @Injectable()
 export class YandexStreamEffects {
 
   constructor(private actions$: Actions, private yandexStreamService: YandexStreamService) {}
+
 
   @Effect()
   public createStream = this.actions$.pipe(

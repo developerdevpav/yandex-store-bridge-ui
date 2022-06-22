@@ -1,10 +1,10 @@
 import {State} from "../index";
 import {createSelector} from "@ngrx/store";
 import {YandexStreamState} from "./reducers";
-import {YandexStream} from "../service/yandex-stream-service";
+import {YandexStream} from "../domain";
 
-export const selectStateYandexStream = (state: State) => state.yandexStreamState;
+export const selectorStateYandexStream = (state: State) => state.yandexStreamState;
 
 export const selectYandexStream = createSelector(
-  selectStateYandexStream, (yandexStreamState: YandexStreamState) => yandexStreamState.streams as YandexStream[]
+  selectorStateYandexStream, (yandexStreamState: YandexStreamState) => yandexStreamState.streams || []
 )
