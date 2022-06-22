@@ -19,6 +19,7 @@ import {YandexStreamEffects} from "./store/yandex-stream/effects";
 import { MimeTypeCardComponent } from './blocks/mime-type-card/mime-type-card.component';
 import { StreamContainerComponent } from './blocks/stream-container/stream-container.component';
 import { StreamFormComponent } from './blocks/stream-form/stream-form.component';
+import {MimeTypeEffects} from "./store/mime-type/effects";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { StreamFormComponent } from './blocks/stream-form/stream-form.component'
     BrowserModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([YandexUserEffects, YandexStreamEffects]),
+    EffectsModule.forRoot([YandexUserEffects, YandexStreamEffects, MimeTypeEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

@@ -30,3 +30,16 @@ export interface GooglePageMediaItem {
   next: string;
   mediaItems: Array<GoogleMediaItem>;
 }
+
+export interface YandexStream {
+  id: number;
+  name: string;
+  status: string;
+  mediaTypes: MimeType[] | undefined;
+  date: Date;
+}
+
+export class RequestCreateYandexStream {
+  id: string | null = null;
+  mediaTypes: string[] = [];
+}

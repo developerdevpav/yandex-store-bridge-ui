@@ -1,14 +1,17 @@
 import {yandexUserReducer, YandexUserState} from "./yandex-user/reducers";
 import {ActionReducerMap} from "@ngrx/store";
 import {reducerYandexStream, YandexStreamState} from "./yandex-stream/reducers";
+import {MimeTypeState, reducerMimeType} from "./mime-type/reducers";
 
 export interface State {
-  yandexUser: YandexUserState;
-  yandexStream: YandexStreamState
+  yandexUserState: YandexUserState;
+  yandexStreamState: YandexStreamState;
+  mimeTypeState: MimeTypeState;
 }
 
 
 export const reducers: ActionReducerMap<State> = {
-  yandexUser: yandexUserReducer,
-  yandexStream: reducerYandexStream
+  yandexUserState: yandexUserReducer,
+  yandexStreamState: reducerYandexStream,
+  mimeTypeState: reducerMimeType
 }

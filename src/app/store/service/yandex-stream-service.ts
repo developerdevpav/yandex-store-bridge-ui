@@ -1,20 +1,8 @@
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
-import {MimeType} from "../domain";
+import {MimeType, RequestCreateYandexStream, YandexStream} from "../domain";
 
-export interface YandexStream {
-  id: number;
-  name: string;
-  status: string;
-  mediaTypes: MimeType[] | undefined;
-  date: Date;
-}
-
-export class RequestCreateYandexStream {
-  id: string | null = null;
-  mediaTypes: string[] = [];
-}
 
 @Injectable({ providedIn: 'root' })
 export class YandexStreamService {
