@@ -3,7 +3,6 @@
     <stream-form></stream-form>
   </div>
     <div class="col-9 mt-3">
-      <button (click)="addMimeType()">Добавить Mime Types</button>
       <ng-template [ngIf]="streams.length > 0">
       <stream-container [streams]="streams"></stream-container>
       </ng-template>

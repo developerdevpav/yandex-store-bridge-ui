@@ -29,26 +29,4 @@ export class StreamPageComponent implements OnInit {
     });
   }
 
-  addMimeType() {
-    this.localStore.dispatch(setStoreUncloudedMimeType({
-      mimeTypes: [
-        {
-          id: 1,
-          name: 'MP4'
-        },
-        {
-          id: 2,
-          name: 'PNG'
-        },
-        {
-          id: 3,
-          name: 'JPEG'
-        },
-        {
-          id: 4,
-          name: 'HEIC'
-        }
-      ]
-    }))
-  }
 }
