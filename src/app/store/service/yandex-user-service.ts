@@ -10,7 +10,7 @@ export class YandexUserService {
   }
 
   public getYandexUser = (): Observable<YandexUser> => {
-    return this.httpClient.get('/api/yandex/user');
+    return this.httpClient.get('/oauth2/yandex/user');
   }
 
   public yandexAuthorization = (): Observable<any> => {

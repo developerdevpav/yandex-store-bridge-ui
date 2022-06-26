@@ -30,11 +30,11 @@ export class AppComponent implements OnInit {
     }
   ]
 
-  constructor(public httpClient: HttpClient, private yandexUserStore: Store<YandexUserState>) {
+  constructor(private yandexUserStore: Store<YandexUserState>) {
   }
 
   ngOnInit(): void {
-    this.yandexUserStore.dispatch(reqYandexUserFromServer());1
+    this.yandexUserStore.dispatch(reqYandexUserFromServer());
   }
 
 }
