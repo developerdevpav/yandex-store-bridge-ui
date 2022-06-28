@@ -2,7 +2,7 @@ export type SelectorKeyType = number | string;
 
 export class Selector<T extends any> {
 
-  private map: {[key: SelectorKeyType]: T} = {};
+  private map: { [key: SelectorKeyType]: T } = {};
 
   constructor(private keyField: string = 'id') {
   }
@@ -29,6 +29,8 @@ export class Selector<T extends any> {
   collect = () => new CollectorsImpl(this.map);
 
   private getObjKey = (obj: any): SelectorKeyType => obj[this.keyField];
+
+  clear = () => Object.keys(this.map).forEach(it => delete this.map[it]);
 
 }
 

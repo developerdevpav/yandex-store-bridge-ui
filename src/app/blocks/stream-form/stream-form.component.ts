@@ -35,6 +35,8 @@ export class StreamFormComponent implements OnInit {
 
     const yandexStreamAction = serverCreateYandexStream(bodyReq);
 
+    this.mimeTypeSelector.clear();
+
     this.localStore.dispatch(yandexStreamAction);
   }
 
